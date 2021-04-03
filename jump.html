@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style-jump.css">
+    <title>Hra skok</title>
+    
+</head>
+<body onload="setUp()">
+    <header>
+        <h1>Jumping</h1>
+        <p>Skákanie: ⬆ alebo w. <img src="https://s2.svgbox.net/materialui.svg?ic=mobile_off&color=000" width="16" height="16"></p>
+    </header>
+
+    <div id="game">
+        <div class="countdown">
+            <div class="go">3</div>
+            <div class="go">2</div>
+            <div class="go">1</div>
+            <div class="go">GO</div>
+        </div>
+    
+        <div class="oznam">
+            <h1>Game over ☹</h1>
+        </div>
+        <div id="character"></div>
+        <div id="block"></div>
+        <div class="img">
+            <img src="cactus2.svg" alt="">
+            <img src="cactus2.svg" alt="">
+        </div>
+    </div>
+    <div class="nav">
+    <div id="start" class="btn btn-0">Start</div>
+    <div id="stop" class="btn btn-1">Stop</div>
+    </div>
+
+    <audio id="ding" src="sound/ding.mp3" ></audio>
+    <audio id="alert" src="sound/alert.mp3"></audio>
+    <audio id="music" src="sound/background-music.mp3"></audio>
+    <audio id="jump" src="sound/mario-jump.mp3"></audio>
+
+    <a href="https://www.youtube.com/watch?v=bG2BmmYr9NQ" target="blank">youtube</a>
+
+    <div class="prev-div">reklama</div>
+    
+    <script src="script-jump.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</body>
+</html>
