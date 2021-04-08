@@ -11,6 +11,21 @@ const ding = document.getElementById("ding");
 const music = document.getElementById("music");
 const marioJump = document.getElementById("jump");
 
+// style
+// style vlastnosti elementu block a character
+let blockStyle = getComputedStyle(block);
+let characterStyle = getComputedStyle(character);
+
+// character
+let characterWidth = parseInt(characterStyle.width)
+
+
+// move character
+let charakterLeft = parseInt(characterStyle.left) //  default 10px
+
+console.log(characterWidth);
+
+
 
 
 
@@ -74,6 +89,8 @@ function stopGame() {
     timeDelay = delay;
     playGame = false;
     pauseAudio(music);
+    character.style.left = "10px"
+    charakterLeft = 10
     //console.log(playGame);
 }
 
@@ -94,10 +111,21 @@ function jump() {
 
 // skakanie na klavesi ArrowUp a W
 document.body.addEventListener("keydown", myfunction);
+
 function myfunction(event) {
     if ( event.key === "ArrowUp" || event.key === "w" ) {
         jump();
         playAudio(marioJump);
+    }
+    if(event.key === "ArrowRight") {
+        charakterLeft = charakterLeft + 5
+        character.style.left = charakterLeft + "px"
+        console.log(charakterLeft);
+    }
+    if(event.key === "ArrowLeft") {
+        charakterLeft = charakterLeft - 5
+        character.style.left = charakterLeft + "px"
+        console.log(charakterLeft);
     }
     //console.log(event.key);
 }
@@ -105,19 +133,16 @@ function myfunction(event) {
 
 // kontrola kolizie
 
-// style vlastnosti elementu block a character
-var blockLeft = getComputedStyle(block);
-var charactertop = getComputedStyle(character);
 
 var controlColision = setInterval(() => {
     if (playGame) { 
         // do premennej uložime každích 10ms left a top 
-        var cheackLeft = parseInt(blockLeft.left);
-        var cheackTop = parseInt(charactertop.top);
+        var cheackLeft = parseInt(blockStyle.left);
+        var cheackTop = parseInt(characterStyle.top);
         //console.log(cheackTop);
 
         // ak sa blok z characterom prekrivaju zastavme hru
-        if(cheackLeft <= 30 && cheackTop >= 128 ) {
+        if(cheackLeft <= charakterLeft + characterWidth && cheackTop >= 128 ) {
                 stopGame();
                 playGame = false;
                 gameOver.style.display = "block";
@@ -125,6 +150,7 @@ var controlColision = setInterval(() => {
         }
     }
 }, 10);
+
 
 // play audio
 function playAudio(toto) {
@@ -145,7 +171,7 @@ function pauseAudio(pauza) {
 function setUp() {
 
     // všetkym v poly dame display none
-    for (var i = 0; i < countdown.length; i++) //nechce fungovať for ciklus
+    for (var i = 0; i < countdown.length; i++) 
     countdown[i].style.display = "none";
     
     gameOver.style.display = "none";
