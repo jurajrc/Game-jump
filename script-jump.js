@@ -11,6 +11,8 @@ const ding = document.getElementById("ding");
 const music = document.getElementById("music");
 const marioJump = document.getElementById("jump");
 
+console.log(alert);
+
 // style
 // style vlastnosti elementu block a character
 let blockStyle = getComputedStyle(block);
@@ -23,10 +25,7 @@ let characterWidth = parseInt(characterStyle.width)
 // move character
 let charakterLeft = parseInt(characterStyle.left) //  default 10px
 
-console.log(characterWidth);
-
-
-
+//console.log(characterWidth);
 
 
 var playGame = false;
@@ -45,7 +44,7 @@ start.addEventListener("click", () => {
     playGame = true;
     gameOver.style.display = "none";
     countdown[0].style.display = "block";
-    playAudio(music);
+    playAudio(music, 1);
 
     //console.log(playGame);
 
@@ -88,7 +87,7 @@ function stopGame() {
     gameOver.style.display = "none";
     timeDelay = delay;
     playGame = false;
-    pauseAudio(music);
+    //pauseAudio(music);
     character.style.left = "10px"
     charakterLeft = 10
     //console.log(playGame);
@@ -103,7 +102,7 @@ function jump() {
     if ( character.classList != "animate-jump" ) {
         character.classList.add("animate-jump");
     }
-    
+    playAudio(marioJump, 0.05)
     setTimeout(function() {
         character.classList.remove("animate-jump");
     },600);
@@ -115,19 +114,28 @@ document.body.addEventListener("keydown", myfunction);
 function myfunction(event) {
     if ( event.key === "ArrowUp" || event.key === "w" ) {
         jump();
-        playAudio(marioJump);
+        //playAudio(marioJump);
+        
     }
-    if(event.key === "ArrowRight") {
+    if( event.key === "ArrowRight" ) {
         charakterLeft = charakterLeft + 5
         character.style.left = charakterLeft + "px"
-        console.log(charakterLeft);
+        
+        if(charakterLeft > 301) {
+            charakterLeft = 300
+        }
     }
-    if(event.key === "ArrowLeft") {
+    if( event.key === "ArrowLeft" ) {
         charakterLeft = charakterLeft - 5
         character.style.left = charakterLeft + "px"
-        console.log(charakterLeft);
+        //console.log(charakterLeft);
+        if (charakterLeft < 4) {
+            character.style.left = "0px"
+            charakterLeft = 0
+        } 
     }
     //console.log(event.key);
+    console.log(charakterLeft);
 }
 
 
@@ -142,21 +150,25 @@ var controlColision = setInterval(() => {
         //console.log(cheackTop);
 
         // ak sa blok z characterom prekrivaju zastavme hru
+        
         if(cheackLeft <= charakterLeft + characterWidth && cheackTop >= 128 ) {
+            
                 stopGame();
                 playGame = false;
                 gameOver.style.display = "block";
-                playAudio(alert);
+                alert.volume = .2
+                playAudio(alert, 0.1);
         }
+
     }
 }, 10);
 
-
+alert.muted = false
 // play audio
-function playAudio(toto) {
-    toto.volume = 0.5;
-    toto.play();
-    //toto.volume = vois;
+function playAudio(toto, valueVolume) {
+    toto.play()
+    toto.volume = valueVolume;
+    
 }
 
 // pause audio
