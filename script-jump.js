@@ -6,12 +6,16 @@ var stop = document.getElementById("stop");
 var gameOver = document.querySelector(".oznam");
 
 // audio
-const alert = document.getElementById("alert");
-const ding = document.getElementById("ding");
+let alert = document.getElementById("alert");
+let ding = document.getElementById("ding");
 const music = document.getElementById("music");
 const marioJump = document.getElementById("jump");
 
-console.log(alert);
+//console.log( alert.src = "sound/ding.mp3" );
+
+// faster game
+let speedAnimate = document.querySelector('.animateBlock')
+console.log(speedAnimate);
 
 // style
 // style vlastnosti elementu block a character
@@ -30,21 +34,30 @@ let charakterLeft = parseInt(characterStyle.left) //  default 10px
 
 var playGame = false;
 
-//console.log(playGame);
 
+// countdown time delay
 var delay = 600;
 var timeDelay = delay;
 
 var countdown = document.querySelectorAll(".go");
 
+let score = 0
+let valueScore = document.querySelector("#game-score")
 
+// navisovanieScore = function() {
+//     if(playGame) {
+        
+//     }
+// }
 
 // štart gulišky
 start.addEventListener("click", () => {
     playGame = true;
     gameOver.style.display = "none";
     countdown[0].style.display = "block";
-    playAudio(music, 1);
+    playAudio(music, .2);
+    score = 0
+    valueScore.textContent = score
 
     //console.log(playGame);
 
@@ -90,10 +103,12 @@ function stopGame() {
     //pauseAudio(music);
     character.style.left = "10px"
     charakterLeft = 10
-    //console.log(playGame);
+    
+
 }
 
-stop.addEventListener("click", stopGame );
+stop.addEventListener("click", stopGame )
+
 
 
 
@@ -102,11 +117,20 @@ function jump() {
     if ( character.classList != "animate-jump" ) {
         character.classList.add("animate-jump");
     }
+
+    if(playGame) {
+        score++
+        console.log(score);
+        valueScore.textContent = score
+    }
+    
     playAudio(marioJump, 0.05)
     setTimeout(function() {
         character.classList.remove("animate-jump");
     },600);
 }
+
+
 
 // skakanie na klavesi ArrowUp a W
 document.body.addEventListener("keydown", myfunction);
@@ -115,6 +139,7 @@ function myfunction(event) {
     if ( event.key === "ArrowUp" || event.key === "w" ) {
         jump();
         //playAudio(marioJump);
+        
         
     }
     if( event.key === "ArrowRight" ) {
@@ -139,6 +164,8 @@ function myfunction(event) {
 }
 
 
+
+
 // kontrola kolizie
 
 
@@ -151,14 +178,16 @@ var controlColision = setInterval(() => {
 
         // ak sa blok z characterom prekrivaju zastavme hru
         
-        if(cheackLeft <= charakterLeft + characterWidth && cheackTop >= 128 ) {
             
+            if(cheackLeft <=  charakterLeft + characterWidth*1.5 && cheackTop >= 128 ) {
                 stopGame();
                 playGame = false;
                 gameOver.style.display = "block";
-                alert.volume = .2
                 playAudio(alert, 0.1);
-        }
+            }
+        
+         
+        
 
     }
 }, 10);
@@ -182,7 +211,7 @@ function pauseAudio(pauza) {
 
 function setUp() {
 
-    // všetkym v poly dame display none
+    // odpočitavanie - všetkym v poly dame display none
     for (var i = 0; i < countdown.length; i++) 
     countdown[i].style.display = "none";
     

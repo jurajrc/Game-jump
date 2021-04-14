@@ -72,7 +72,7 @@ h1 {
 }
 
 .animate-jump {
-    animation: jump .6s;
+    animation: jump .6s; //.6s
 }
 
 #block {
@@ -91,7 +91,7 @@ h1 {
 }
 
 .animateBlock {
-    animation: moveBlock 1000ms linear infinite;
+    animation: moveBlock 1000ms linear infinite; // 1000ms
 }
 
 @keyframes jump {
@@ -124,6 +124,15 @@ h1 {
 
 .nav {
     text-align: center;
+
+}
+#game-score {
+    font-weight: bold;
+    text-align: center;
+    font-size: 2.5em;
+    position: relative;
+    left: -200px;
+    //top: 20px
 }
 
 .btn {
@@ -131,7 +140,8 @@ h1 {
     width: 5em;
     background: green;
     padding: .5em;
-    text-align: center;cursor: pointer;
+    text-align: center;
+    cursor: pointer;
     font-weight: bold;
     transition: .2s all ease;
     border: 3px solid transparent;
