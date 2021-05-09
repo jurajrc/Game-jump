@@ -38,17 +38,13 @@ var playGame = false;
 // countdown time delay
 var delay = 600;
 var timeDelay = delay;
-
 var countdown = document.querySelectorAll(".go");
 
+// ukaž skore
 let score = 0
 let valueScore = document.querySelector("#game-score")
 
-// navisovanieScore = function() {
-//     if(playGame) {
-        
-//     }
-// }
+
 
 // štart gulišky
 start.addEventListener("click", () => {
@@ -120,7 +116,7 @@ function jump() {
 
     if(playGame) {
         score++
-        console.log(score);
+        //console.log(score);
         valueScore.textContent = score
     }
     
@@ -160,7 +156,7 @@ function myfunction(event) {
         } 
     }
     //console.log(event.key);
-    console.log(charakterLeft);
+    //console.log(charakterLeft);
 }
 
 
