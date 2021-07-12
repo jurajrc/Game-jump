@@ -62,14 +62,20 @@ h1 {
 }
 
 #character {
-    width: em(20);
-    height: em(50);
-    background: red;
+    width: em(39); //em(20)
+    height: em(50);  //em(50)
+    //background: red;
     position: relative;
     top: em(148);
     left: em(10);
-    border: 1px solid black;
+    //border: 1px solid black;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
 }
+
 
 .animate-jump {
     animation: jump .6s; //.6s
