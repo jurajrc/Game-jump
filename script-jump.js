@@ -164,13 +164,20 @@ function myfunction(event) {
 
 // kontrola kolizie
 
+// checkBallLeft
+// checkPlayerLeft  nova hodnota
+// checkPlayerTop
+
+// if (zostane && checkBallLeft >= checkPlayerLeft-{polka šírky gulicky}&& checkBallLeft <= checkPlayerLeft+{polka šítky gulicky}
+
 
 var controlColision = setInterval(() => {
     if (playGame) { 
-        // do premennej uložime každích 10ms left a top 
+        // do premennej uložime každích 10ms leftGulička a topPlayer a leftPlayer
         var cheackLeft = parseInt(blockStyle.left);
         var cheackTop = parseInt(characterStyle.top);
-        //console.log(cheackTop);
+        let cheackPlayerLeft = parseInt(characterStyle.left);
+        
 
         // ak sa blok z characterom prekrivaju zastavme hru
         
