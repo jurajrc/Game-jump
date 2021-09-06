@@ -11,11 +11,9 @@ let ding = document.getElementById("ding");
 const music = document.getElementById("music");
 const marioJump = document.getElementById("jump");
 
-//console.log( alert.src = "sound/ding.mp3" );
 
 // faster game
-let speedAnimate = document.querySelector('.animateBlock')
-console.log(speedAnimate);
+let speedAnimate = document.querySelector('.animateBlock')//
 
 // style
 // style vlastnosti elementu block a character
@@ -28,8 +26,6 @@ let characterWidth = parseInt(characterStyle.width)
 
 // move character
 let charakterLeft = parseInt(characterStyle.left) //  default 10px
-
-//console.log(characterWidth);
 
 
 var playGame = false;
@@ -55,8 +51,6 @@ start.addEventListener("click", () => {
     score = 0
     valueScore.textContent = score
 
-    //console.log(playGame);
-
     // odčitavanie
     setTimeout(() => {
         countdown[0].style.display = "none";
@@ -79,13 +73,7 @@ start.addEventListener("click", () => {
         timeDelay = delay;
     }, timeDelay = timeDelay + 300 );
     
-    // Odpočitavanie dlžky hry s ukončením
-    // if(playGame === true) {
-    //     setTimeout( () => {
-    //         stopGame();
-    //         alert("Vyhral si jupí")
-    //     },10000);
-    // }
+   
 })
 
 
@@ -96,7 +84,6 @@ function stopGame() {
     gameOver.style.display = "none";
     timeDelay = delay;
     playGame = false;
-    //pauseAudio(music);
     character.style.left = "10px"
     charakterLeft = 10
     
@@ -116,7 +103,6 @@ function jump() {
 
     if(playGame) {
         score++
-        //console.log(score);
         valueScore.textContent = score
     }
     
@@ -134,7 +120,6 @@ document.body.addEventListener("keydown", myfunction);
 function myfunction(event) {
     if ( event.key === "ArrowUp" || event.key === "w" ) {
         jump();
-        //playAudio(marioJump);
         
         
     }
@@ -149,14 +134,11 @@ function myfunction(event) {
     if( event.key === "ArrowLeft" ) {
         charakterLeft = charakterLeft - 5
         character.style.left = charakterLeft + "px"
-        //console.log(charakterLeft);
         if (charakterLeft < 4) {
             character.style.left = "0px"
             charakterLeft = 0
         } 
     }
-    //console.log(event.key);
-    //console.log(charakterLeft);
 }
 
 
@@ -173,6 +155,8 @@ function myfunction(event) {
 
 var controlColision = setInterval(() => {
     if (playGame) { 
+
+        let t0 = performance.now()
         // do premennej uložime každích 10ms leftGulička a topPlayer a leftPlayer
         var cheackLeft = parseInt(blockStyle.left);
         var cheackTop = parseInt(characterStyle.top);
@@ -191,7 +175,9 @@ var controlColision = setInterval(() => {
         
          
         
+        let t1 = performance.now()
 
+    console.log( (t1 - t0.toFixed(3)) + 'ms' );
     }
 }, 10);
 
