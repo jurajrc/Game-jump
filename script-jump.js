@@ -86,13 +86,9 @@ function stopGame() {
     playGame = false;
     character.style.left = "10px"
     charakterLeft = 10
-    
-
 }
 
 stop.addEventListener("click", stopGame )
-
-
 
 
 // skákanie a formatovanie-(odobratie class animate-jump)
@@ -151,7 +147,7 @@ function myfunction(event) {
 // checkPlayerTop
 
 // if (zostane && checkBallLeft >= checkPlayerLeft-{polka šírky gulicky}&& checkBallLeft <= checkPlayerLeft+{polka šítky gulicky}
-
+let t = 0
 
 var controlColision = setInterval(() => {
     if (playGame) { 
@@ -161,32 +157,33 @@ var controlColision = setInterval(() => {
         var cheackLeft = parseInt(blockStyle.left);
         var cheackTop = parseInt(characterStyle.top);
         let cheackPlayerLeft = parseInt(characterStyle.left);
-        
+        console.log(cheackPlayerLeft);
 
         // ak sa blok z characterom prekrivaju zastavme hru
         
             
-            if(cheackLeft <=  charakterLeft + characterWidth*1.5 && cheackTop >= 128 ) {
+            if(cheackLeft <= charakterLeft + characterWidth*1.5 && cheackTop >= 128 ) {
                 stopGame();
                 playGame = false;
                 gameOver.style.display = "block";
                 playAudio(alert, 0.1);
             }
         
-         
-        
         let t1 = performance.now()
-
-    console.log( (t1 - t0.toFixed(3)) + 'ms' );
+        t++
+    //console.log( t ,(t1 - t0.toFixed(3)) + 'ms' );
     }
 }, 10);
 
+
 alert.muted = false
+
 // play audio
 function playAudio(toto, valueVolume) {
     toto.play()
+
+    // hlasitosť zvuku
     toto.volume = valueVolume;
-    
 }
 
 // pause audio

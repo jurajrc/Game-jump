@@ -1,18 +1,43 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 body {
   width: 100%;
   height: 100vh;
-  background: radial-gradient(circle, rgba(255, 253, 253, 0.8696429255) 2%, #69290d 88%); }
+  background: radial-gradient(circle, rgba(255, 253, 253, 0.8696429255) 2%, rgb(105, 41, 13) 88%);
+  position: relative;
+}
+body .small-screen {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+body .small-screen h3 {
+  padding: 1em;
+  background: #87553F;
+}
+@media (min-width: 520px) {
+  body .small-screen {
+    display: none;
+  }
+}
 
 header {
-  text-align: center; }
+  text-align: center;
+}
 
 h1 {
-  margin: .7em 0; }
+  margin: 0.7em 0;
+}
 
 #game {
   width: 31.25em;
@@ -21,14 +46,16 @@ h1 {
   margin: 1.875em auto;
   box-shadow: 5px 5px 10px #000;
   overflow: hidden;
-  background: linear-gradient(180deg, #00d4ff 0%, rgba(9, 104, 121, 0.2) 51%, #825237 100%);
-  position: relative; }
+  background: linear-gradient(180deg, rgb(0, 212, 255) 0%, rgba(9, 104, 121, 0.2) 51%, rgb(130, 82, 55) 100%);
+  position: relative;
+}
 
 .countdown {
   width: 100%;
   height: 100%;
   position: absolute;
-  text-align: center; }
+  text-align: center;
+}
 
 .countdown div {
   position: absolute;
@@ -36,30 +63,36 @@ h1 {
   transform: translateX(-50%);
   top: 10%;
   font-size: 5em;
-  font-weight: bold; }
+  font-weight: bold;
+}
 
 .img img:nth-child(1) {
   position: absolute;
   bottom: -0.9375em;
-  right: 3.125em; }
+  right: 3.125em;
+}
 
 .img img:nth-child(2) {
   position: absolute;
   bottom: -0.9375em;
-  right: 18.75em; }
+  right: 18.75em;
+}
 
 #character {
-  width: 1.25em;
+  width: 2.4375em;
   height: 3.125em;
   position: relative;
   top: 9.25em;
-  left: 0.625em; }
-  #character img {
-    width: 100%;
-    height: 100%; }
+  left: 0.625em;
+}
+#character img {
+  width: 100%;
+  height: 100%;
+}
 
 .animate-jump {
-  animation: jump .6s; }
+  animation: jump 0.6s;
+}
 
 #block {
   width: 1.25em;
@@ -69,84 +102,120 @@ h1 {
   top: 8em;
   left: 29.875em;
   border-radius: 50%;
-  border: 2px solid black; }
+  border: 2px solid black;
+}
 
 .jumpPause {
-  animation: jumpBlockPause 1s linear infinite; }
+  animation: jumpBlockPause 1s linear infinite;
+}
 
 .animateBlock {
-  animation: moveBlock 1000ms linear infinite; }
+  animation: moveBlock 1000ms linear infinite;
+}
 
 @keyframes jump {
   0% {
-    top: 9.375em; }
+    top: 9.375em;
+  }
   40% {
-    top: 6.25em; }
+    top: 6.25em;
+  }
   60% {
-    top: 6.25em; }
+    top: 6.25em;
+  }
   100% {
-    top: 9.375em; } }
+    top: 9.375em;
+  }
+}
 @keyframes moveBlock {
   0% {
     left: 30em;
-    opacity: 1; }
+    opacity: 1;
+  }
   95% {
-    opacity: 1; }
+    opacity: 1;
+  }
   100% {
     left: -1.25em;
-    opacity: 0; } }
+    opacity: 0;
+  }
+}
 @keyframes jumpBlockPause {
   0% {
-    top: 8em; }
+    top: 8em;
+  }
   80% {
-    top: 6.25em; }
+    top: 6.25em;
+  }
   100% {
-    top: 8em; } }
+    top: 8em;
+  }
+}
 .nav {
-  text-align: center; }
+  text-align: center;
+}
 
 #game-score {
   font-weight: bold;
   text-align: center;
   font-size: 2.5em;
   position: relative;
-  left: -200px; }
+  left: -200px;
+}
 
 .btn {
   display: inline-block;
   width: 5em;
   background: green;
-  padding: .5em;
+  padding: 0.5em;
   text-align: center;
   cursor: pointer;
   font-weight: bold;
-  transition: .2s all ease;
-  border: 3px solid transparent; }
+  transition: 0.2s all ease;
+  border: 3px solid transparent;
+}
 
 .btn:nth-child(2) {
-  background: red; }
+  background: red;
+}
 
 .btn:hover,
 .btn:focus {
   box-shadow: 2px 2px 4px #000;
-  opacity: .7;
-  border: 2px solid #000; }
+  opacity: 0.7;
+  border: 2px solid #000;
+}
 
 .oznam {
   position: absolute;
   width: 80%;
   height: 100%;
   left: 10%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  animation: bouns 1s infinite ease;
+}
 
+@keyframes bouns {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 .oznam h1 {
   padding: 1em;
   border: 4px solid orange;
   text-transform: uppercase;
-  text-align: center; }
+  text-align: center;
+}
 
 .prev-div {
-  opacity: 0; }
+  opacity: 0;
+}
 
 /* Adaptive screen  */
 /*

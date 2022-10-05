@@ -1,7 +1,11 @@
 
-@function em( $size , $context: 16 ) {
-    @return( $size / $context ) * 1em;
-};
+// @function em( $size , $context: 16 ) {
+//     @return( $size / $context ) * 1em;
+// };
+
+@function em($size, $context: 16) {
+    @return( calc($size / $context) + em )
+}
 
 
 * {
@@ -14,6 +18,26 @@ body {
     width: 100%;
     height: 100vh;
     background: radial-gradient(circle, rgba(255,253,253,0.8696429255295868) 2%, rgba(105,41,13,1) 88%);
+    position: relative;
+
+    .small-screen {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(10px);
+        h3 {
+            padding: 1em;
+            background: #87553F;
+        }
+        @media (min-width: 520px) {
+            display: none;
+        }
+    }
 }
 
 header {
@@ -141,6 +165,8 @@ h1 {
     //top: 20px
 }
 
+
+
 .btn {
     display: inline-block;
     width: 5em;
@@ -172,6 +198,19 @@ h1 {
     left: 10%;
     
     margin: 0 auto;
+    animation: bouns 1s infinite ease ;
+}
+
+@keyframes bouns {
+    0% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .oznam h1 {
