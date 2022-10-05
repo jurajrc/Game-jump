@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style-jump.css">
+    <link rel="stylesheet" href="./css/style-jump.css">
     <title>Hra skok</title>
 
 </head>
@@ -13,7 +13,7 @@
 <body onload="setUp()">
     <header>
         <h1>Jumping</h1>
-        <p>Skákanie: ⬆ alebo w. <img src="https://s2.svgbox.net/materialui.svg?ic=mobile_off&color=000" width="16"
+        <p>Jump press: ⬆ or w. <img src="https://s2.svgbox.net/materialui.svg?ic=mobile_off&color=000" width="16"
                 height="16"></p>
     </header>
 
@@ -39,7 +39,11 @@
     <div id="game-score">0</div>
     <div class="nav">
         <div id="start" class="btn btn-0">Start</div>
-        <div id="stop" class="btn btn-1">Stop</div>
+        <div id="stop" class="btn btn-1">Reset</div>
+    </div>
+
+    <div class="small-screen">
+        <h3>Width screen  must<br> bigger like 520px</h3>
     </div>
 
     <audio id="ding" src="sound/ding.mp3"></audio>
